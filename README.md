@@ -22,8 +22,8 @@ encrypted at rest.
 
 ## Setup
 
-1. Grab the installer from Releases (`Sidekick-Setup-x.x.x.exe`) or the
-   portable zip.
+1. Build the installer yourself: `npm install && npm run dist` produces
+   `Sidekick-Setup-x.x.x.exe` (NSIS) and a portable zip under `dist/`.
 2. Run Sidekick, open Settings (gear icon), paste your keys:
    - Gemini: https://aistudio.google.com/apikey (free)
    - Groq: https://console.groq.com/keys (free)
