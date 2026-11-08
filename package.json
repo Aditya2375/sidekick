@@ -1,0 +1,52 @@
+{
+  "name": "sidekick-overlay",
+  "version": "1.0.0",
+  "description": "Sidekick - hotkey AI overlay for meetings and study",
+  "main": "src/main/index.js",
+  "author": "Aditya Kulkarni",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test \"test/*.test.js\"",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder --win"
+  },
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.0.0"
+  },
+  "build": {
+    "appId": "com.adityakulkarni.sidekick",
+    "productName": "Sidekick",
+    "asar": true,
+    "files": [
+      "src/**/*",
+      "sidecar/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "Sidekick"
+    }
+  }
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data:; media-src 'self' blob:">
+<title>Sidekick</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="titlebar">
+    <span class="dot"></span>
+    <span class="title">Sidekick</span>
+    <span id="exam-banner" class="hidden">exam software detected - capture exclusion off</span>
+    <button id="btn-settings" title="Settings">&#9881;</button>
+    <button id="btn-close" title="Hide">&times;</button>
+  </div>
+
+  <div id="mode-tabs">
+    <button id="tab-assist" class="tab">Assist</button>
+    <button id="tab-meeting" class="tab">Meeting</button>
+  </div>
+
+  <div id="view-assist" class="view">
+    <div id="chat-log"></div>
+    <div id="chat-input-row">
+      <input id="chat-input" type="text" maxlength="4000" placeholder="Ask anything..." autocomplete="off">
+      <button id="btn-send">Send</button>
+    </div>
+  </div>
+
+  <div id="view-meeting" class="view hidden">
+    <div id="meeting-controls">
+      <button id="btn-mic">Start mic</button>
+      <button id="btn-system">Start system audio</button>
+      <label class="check">
+        <input type="checkbox" id="chk-exclusion">
+        exclude from screen share
+      </label>
+      <button id="btn-clear-transcript">Clear</button>
+    </div>
+    <div id="stt-status">mic off - system audio off</div>
+    <div id="transcript-log"></div>
+    <div id="suggestions-header">Suggestions</div>
+    <div id="suggestions-log"></div>
+  </div>
+
+  <div id="settings-modal" class="hidden">
+    <div class="modal-card">
+      <h2>Settings</h2>
+      <label>Gemini API key (free, AI Studio)
+        <input type="password" id="set-gemini" autocomplete="off" placeholder="stored encrypted on this device">
+      </label>
+      <label>Groq API key (free tier)
+        <input type="password" id="set-groq" autocomplete="off" placeholder="used for chat fallback + transcription">
+      </label>
+      <div class="row">
+        <button id="btn-save-keys">Save keys</button>
+        <span id="key-status"></span>
+      </div>
+      <label>Hotkey
+        <input type="text" id="set-hotkey" maxlength="64">
+      </label>
+      <label class="check">
+        <input type="checkbox" id="set-keep-transcripts">
+        keep local transcripts (encrypted, this device only)
+      </label>
+      <label class="check">
+        <input type="checkbox" id="set-sidecar">
+        use local whisper fallback (needs Python + faster-whisper)
+      </label>
+      <div class="row">
+        <button id="btn-save-settings">Save</button>
+        <button id="btn-close-settings">Close</button>
+        <button id="btn-quit" class="danger">Quit Sidekick</button>
+      </div>
+      <p class="fine">Sidekick is a normal visible window. It never hides from exam
+      software and never runs in the background - Quit closes everything.</p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
